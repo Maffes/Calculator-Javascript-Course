@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <script src='https://cdn.tailwindcss.com'></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js" integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script type='module'src='script.js'></script>
+  <title>CSC301 - Task 1 Area Calculator</title>
+</head>
+<body>
+
+<nav class='container mx-auto px-4'>
+  <div class='flex flex-row'>
+  <div class='basis-1/2'>
+    <h1 class='text-3xl font-bold py-5 '>
+      Import Data
+    </h1>
+  </div>
+  <div class='basis-1/2'>
+    <a href='/Week5/public/index.html' class='float-right my-5 bg-transparent hover:bg-blue-500 text-blue-700 hover:text-white py-1 px-4 border border-blue-500 hover:border-white rounded'>Calculator Page</a>
+  </div>
+</div>
+  
+</nav>
+
+
+  <main class='container mx-auto '>
+
+            <div class='container basis-1/2 px-5 flex flex-row'>
+
+              <div class='history py-5 basis-1/2'>
+                  <button id='importButton' class='bg-blue-500 hover:bg-blue-700 text-white py-1 px-3 rounded' >Import Data</button>
+
+                <div id='historyTable'>
+                  <table id='importContents' class='table-auto'>
+                    <thead>
+                      <tr>
+                        <th class='px-3 py-2'>Type</th>
+                        <th class='px-3 py-2'>Value 1</th>
+                        <th class='px-3 py-2'>Value 1 Unit</th>
+                        <th class='px-3 py-2'>Value 2</th>
+                        <th class='px-3 py-2'>Value 2 Unit</th>
+                        <th class='px-3 py-2'>Value 3</th>
+                        <th class='px-3 py-2'>Value 3 Unit</th>
+                        <th class='px-3 py-2'>Answer</th>
+                      </tr>
+                    </thead>
+                    <tbody id="importContentsValues">
+
+                    </tbody>
+                  </table>
+
+                </div>
+
+
+
+
+
+              </div>
+            </div>
+
+          </div>
+        </main>
+
+
+
+      </div>
+    </div>
+  </body>
+</html>

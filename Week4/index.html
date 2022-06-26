@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <script src='https://cdn.tailwindcss.com'></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js" integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src='script.js'></script>
+
+  <title>CSC301 - Task 1 Area Calculator</title>
+</head>
+<body>
+
+<nav class='container mx-auto px-4'>
+  <div class='flex flex-row'>
+    <div class='basis-1/2'>
+      <h1 class='text-3xl font-bold py-5 '>
+        Area Calculator
+      </h1>
+    </div>
+    <div class='basis-1/2'>
+      <a href='/week4/historyPage.html' class='float-right my-5 bg-transparent hover:bg-blue-500 text-blue-700 hover:text-white py-1 px-4 border border-blue-500 hover:border-white rounded'>Import Data</a>
+    </div>
+  </div>
+
+</nav>
+
+
+  <main class='container mx-auto '>
+    <div class='flex flex-row'>
+      
+    <div class='container basis-1/2 '>
+    <div class='rectangle container px-4 py-5 border-t'>
+      <form>
+        <h2 class='text-3m font-medium mb-3'>Rectangle Calculator</h2>
+        <div id='errorMessageRectangle' class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative hidden" role="alert">
+          <strong class='font-bold'>Error!</strong>
+          <span id='errorMessageRectangleText'class="block sm:inline"></span>
+          <span onClick='this.parentNode.classList.add("hidden")' class="absolute top-0 bottom-0 right-0 px-4 py-3">
+            <svg class="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Close</title><path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/></svg>
+          </span>
+        </div>
+        <p class='my-3'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil asperiores similique corrupti? Nulla quidem quo itaque repellendus incidunt commodi sapiente dicta labore quam! Molestias ad molestiae blanditiis?</p>
+        <div class='flex-auto my-3'>
+        <label class='block'>Length (l)</label>
+        <input id='rectangleValue1' class='border solid' type='number'  name='Length (l)' autoComplete='off'/>
+        <select id='rectangleValue1Type' name='measurement-type'>
+          <option value='centimeters'>Centimeters</option>
+          <option value='meters'>Meters</option>
+          <option value='kilometers'>Kilometers</option>
+        </select>
+      </div>
+      <div class='flex-auto my-3'>
+        <label class='block'>Width (w)</label>
+        <input id='rectangleValue2' class='border solid' type='number' name='Width (w)' autoComplete='off'/>
+        <select id='rectangleValue2Type' name='measurement-type'>
+          <option value='centimeters'>Centimeters</option>
+          <option value='meters'>Meters</option>
+          <option value='kilometers'>Kilometers</option>
+        </select>
+      </div>
+
+      <div class="block pb-2">
+      <label >Answer Unit:</label>
+      <select id='rectangleAnswerUnitType' id='answerUnitType' name='answerUnitType'>
+        <option value='centimeters'>Centimeters</option>
+        <option value='meters'>Meters</option>
+        <option value='kilometers'>Kilometers</option>
+      </select>
+      </div>
+
+
+        <button class='bg-blue-500 hover:bg-blue-700 text-white py-1 px-3 rounded' type='button' onclick='myCalculator.rectangle((document.getElementById("rectangleAnswerUnitType").value),(document.getElementById("rectangleValue1").value), (document.getElementById("rectangleValue1Type").value), (document.getElementById("rectangleValue2").value), (document.getElementById("rectangleValue2Type").value))' value='Submit '>Submit</button>
+        <button class='bg-transparent hover:bg-blue-500 text-blue-700 hover:text-white py-1 px-4 border border-blue-500 hover:border-white rounded' type='reset' value='Reset '>Reset</button>
+
+      </form>
+    </div>
+
+
+
+
+
+    <div class='triangle container px-4 py-5 border-t'>
+      <form id='triangleForm'>
+        
+        <h2 class='text-3m font-medium mb-3 invi'>Triangle Calculator</h2>
+        <div id='errorMessageTriangle'  class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative hidden role="alert">
+          <strong class="font-bold">Error!</strong>
+          <span id='errorMessageTriangleText' class="block sm:inline"></span>
+          <span onClick='this.parentNode.classList.add("hidden")' class="absolute top-0 bottom-0 right-0 px-4 py-3">
+            <svg class="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Close</title><path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/></svg>
+          </span>
+        </div>
+
+        <p class='my-3'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil asperiores similique corrupti? Nulla quidem quo itaque repellendus incidunt commodi sapiente dicta labore quam! Molestias ad molestiae blanditiis?</p>
+        <div class='flex-auto my-3'>
+          <label class='block'>Edge 1 (a)</label>
+        <input id='triangleValue1' class='border solid' type='number' name='Edge 1 (a)' autoComplete='off'/>
+
+
+
+        <select id='triangleValue1Type' name='measurement-type'>
+          <option value='centimeters'>Centimeters</option>
+          <option value='meters'>Meters</option>
+          <option value='kilometers'>Kilometers</option>
+        </select>
+      </div>
+      <div class='flex-auto my-3'>
+        <label class='block'>Edge 2 (b)</label>
+
+        <input id='triangleValue2' class='border solid' type='number' name='Edge 2 (b)' autoComplete='off'/>
+        <select id='triangleValue2Type' name='measurement-type'>
+
+          <option value='centimeters'>Centimeters</option>
+          <option value='meters'>Meters</option>
+          <option value='kilometers'>Kilometers</option>
+        </select>
+      </div>
+      <div class='flex-auto my-3'>
+        <label class='block'>Edge 3 (c)</label>
+
+        <input id='triangleValue3' class='border solid' type='number' name='Edge 3 (c)' autoComplete='off'/>
+        <select id='triangleValue3Type' name='measurement-type'>
+
+          <option value='centimeters'>Centimeters</option>
+          <option value='meters'>Meters</option>
+          <option value='kilometers'>Kilometers</option>
+        </select>
+      </div>
+
+
+      <div class="block pb-2">
+        <label >Answer Unit:</label>
+        <select id='triangleAnswerUnitType' id='answerUnitType' name='answerUnitType'>
+          <option value='centimeters'>Centimeters</option>
+          <option value='meters'>Meters</option>
+          <option value='kilometers'>Kilometers</option>
+        </select>
+        </div>
+
+
+        <button class='bg-blue-500 hover:bg-blue-700 text-white py-1 px-3 rounded' type='button' onclick='myCalculator.triangle((document.getElementById("triangleAnswerUnitType").value),(document.getElementById("triangleValue1").value), (document.getElementById("triangleValue1Type").value), (document.getElementById("triangleValue2").value), (document.getElementById("triangleValue2Type").value), (document.getElementById("triangleValue3").value), (document.getElementById("triangleValue3Type").value))' value='Submit '>Submit</button>
+        <button class='bg-transparent hover:bg-blue-500 text-blue-700 hover:text-white py-1 px-4 border border-blue-500 hover:border-white rounded' type='reset' value='Reset '>Reset</button>
+        
+      </form>
+    </div>
+
+
+
+
+
+
+    <div class='Trapezoid container px-4 py-5 border-t'>
+      <form id='trapezoidForm'>
+        <h2 class='text-3m font-medium mb-3'>Trapezoid Calculator</h2>
+        <div id='errorMessageTrapezoid'  class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative hidden role="alert">
+          <strong class="font-bold">Error!</strong>
+          <span id='errorMessageTrapezoidText' class="block sm:inline"></span>
+          <span onClick='this.parentNode.classList.add("hidden")' class="absolute top-0 bottom-0 right-0 px-4 py-3">
+            <svg class="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Close</title><path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/></svg>
+          </span>
+        </div>
+        <p class='my-3'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil asperiores similique corrupti? Nulla quidem quo itaque repellendus incidunt commodi sapiente dicta labore quam! Molestias ad molestiae blanditiis?</p>
+        <div class='flex-auto my-3'>
+          <label class='block'>Base 1 (b1)</label>
+        <input id='trapezoidValue1' class='border solid' type='number' name='Base 1 (b1)' autoComplete='off'/>
+        <select id='trapezoidValue1Type' name='measurement-type'>
+          <option value='centimeters'>Centimeters</option>
+          <option value='meters'>Meters</option>
+          <option value='kilometers'>Kilometers</option>
+        </select>
+      </div>
+      <div class='flex-auto my-3'>
+        <label class='block'>Base 2 (b2)</label>
+        <input id='trapezoidValue2' class='border solid' type='number' name='Base 2 (b2)	' autoComplete='off'/>
+        <select id='trapezoidValue2Type' name='measurement-type'>
+          <option value='centimeters'>Centimeters</option>
+          <option value='meters'>Meters</option>
+          <option value='kilometers'>Kilometers</option>
+        </select>
+      </div>
+      <div class='flex-auto my-3'>
+        <label class='block'>Height (h)</label>
+        <input id='trapezoidValue3' class='border solid' type='number' name='Height (h)' autoComplete='off'/>
+        <select id='trapezoidValue3Type' name='measurement-type'>
+          <option value='centimeters'>Centimeters</option>
+          <option value='meters'>Meters</option>
+          <option value='kilometers'>Kilometers</option>
+        </select>
+      </div>
+
+      <div class="block pb-2">
+        <label >Answer Unit:</label>
+        <select id='trapezoidAnswerUnitType' id='answerUnitType' name='answerUnitType'>
+          <option value='centimeters'>Centimeters</option>
+          <option value='meters'>Meters</option>
+          <option value='kilometers'>Kilometers</option>
+        </select>
+        </div>
+
+        <button class='bg-blue-500 hover:bg-blue-700 text-white py-1 px-3 rounded' type='button' onclick='myCalculator.trapezoid( (document.getElementById("trapezoidAnswerUnitType").value), (document.getElementById("trapezoidValue1").value), (document.getElementById("trapezoidValue1Type").value), (document.getElementById("trapezoidValue2").value), (document.getElementById("trapezoidValue2Type").value), (document.getElementById("trapezoidValue3").value), (document.getElementById("trapezoidValue3Type").value))' value='Submit' >Submit</button>
+        <button class='bg-transparent hover:bg-blue-500 text-blue-700 hover:text-white py-1 px-4 border border-blue-500 hover:hover:border-white rounded' type='reset' value='Reset '>Reset</button>
+      </form>
+    </div>
+          </div>
+
+
+
+
+
+            <div class='container basis-1/2 px-5 flex flex-row'>
+              <div class='results p-5 basis-1/2'>
+                <h2 id='answerContainer' class='text-3m font-medium mb-3'>Result</h2>
+                
+                <p id='answerType' class='type py-3'></p>
+                <p id='answerFormula' class='formula py-3'></p>
+                <p id='answerQuestion' class='input py-3'></p>
+                <p id='answerOutput' class='answer py-3'></p>
+              </div>
+              <div class='history p-5 basis-1/2'>
+                <h2 class='text-3m font-medium mb-3'>History</h2>
+                <span class='block pb-3'><input type='checkbox' onclick='myCalculator.toggleRecordHistory()' checked> Record History</input></span>
+                  <button id='historyButton' class='bg-blue-500 hover:bg-blue-700 text-white py-1 px-3 rounded' onclick='myCalculator.showHistory()'>Show History</button>
+                  <button class='bg-transparent hover:bg-blue-500 text-blue-700 hover:text-white py-1 px-4 border border-blue-500 hover:border-white rounded' onclick='myCalculator.clearHistory()'>Clear History</button>
+                
+                <div id='historyTable' class='invisible'>
+                  <table id='historyContents' class='table-auto'>
+                    <thead>
+                      <tr>
+                        <th>Type</th>
+                        <th>Answer</th>
+                      </tr>
+                    </thead>
+                    <tbody id="historyValues">
+
+                    </tbody>
+                  </table>
+
+                </div>
+
+
+
+
+
+              </div>
+            </div>
+
+          </div>
+        </main>
+
+
+
+      </div>
+    </div>
+  </body>
+</html>
